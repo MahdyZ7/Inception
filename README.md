@@ -5,5 +5,7 @@ docker build -t green-leaf .
 
 to run the container
 ```
-docker run  -it --init green-leaf
+docker run --init -dp 127.0.0.1:3000:3000 green-leaf
 ```
+
+Makke is there for ease
