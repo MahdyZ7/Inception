@@ -1,6 +1,6 @@
 ``` mermaid
 %%{init: {'theme': 'default', "flowchart" : { "curve" : "linear" } } }%%
-flowchart TD
+flowchart TB
 	 in[Login] --> B{Authenticate}
 	 B -- yes --> C[2FA]
 	 B -- No --> in
@@ -16,8 +16,7 @@ flowchart TD
 	 J --> K{paly online?}
 
 
-	 K -- No --> L[play vs bot]
-	 L --> P
+	 K -- No --> O[Game]
 	 K -- Yes --> M[Match making]
 	 M --> N{Found match}
 	 N -- No --> K
