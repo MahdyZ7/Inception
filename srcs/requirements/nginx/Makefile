@@ -6,7 +6,7 @@ build:
 	docker build -t $(IMAGE_NAME) .
 
 run:
-	docker run --init --name $(CONTAINER_NAME) -dp 127.0.0.1:3000:3000 $(IMAGE_NAME)
+	docker run --init --name $(CONTAINER_NAME) -dp 127.0.0.1:3010:3010 $(IMAGE_NAME)
 
 cclean:
 	docker stop $(list)
