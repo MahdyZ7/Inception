@@ -7,4 +7,4 @@ chown -R MahdyZ7:MahdyZ7 /MahdyZ7
 
 mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.orig
 cp /nginx.conf /etc/nginx/nginx.conf
-cp /index.html /MahdyZ7/index.html
+cp /index.html /MahdyZ7/index.html#~

@@ -3,6 +3,7 @@
 FROM alpine:3.19
 RUN apk update && apk upgrade
 RUN apk add bash curl nginx openssl
+
 # Install Nginx, PHP, and other necessary packages php83-mysqli is not installed
 RUN apk add --no-cache php83 php83-fpm php83-json php83-openssl php83-curl \
 	php83-zlib php83-xml php83-phar php83-intl php83-dom php83-xmlreader php83-ctype php83-session \
