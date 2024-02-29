@@ -1,32 +1,66 @@
 version: '3.9'
 services:
-  -nginx:
+  nginx:
     container_name: nginx
-    build: ./nginxDeb
+    build: ./srcs/requirements/nginxDeb/
+    env_file:
+      - .env
     ports:
-      - "443:443"
+      - 443:443
     networks:
       - web
     depends_on:
       - wordpress
-    restart: on_failure
+    restart: on-failure
+    volumes:
+      - wordpress:/var/www/html
   
-  -wordpress:
+  wordpress:
     container_name: wordpress
-    build: ./wordpress
+    build: ./srcs/requirements/wordpress/
+    env_file:
+      - .env
     expose:
       - "9000:9000"
     networks:
       - web
     depends_on:
       - mariadb
-    restart: on_failure
+    restart: on-failure
+    volumes:
+      - wordpress:/var/www/html
   
-  -mariadb:
+  mariadb:
     container_name: mariadb
-    build: ./mariadb
+    build: ./srcs/requirements/mariadb/
+    env_file:
+      - .env
     expose:
       - "3306:3306"
     networks:
       - web
-    restart: on_failure
+    restart: on-failure
+    volumes:
+      - mariadb:/var/lib/mysql
+
+networks:
+  web:
+    driver: bridge
+
+
+
+volumes:
+  mariadb:
+    name: mariadb
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/${USER}/data/mariadb
+      o: bind
+  wordpress:
+    name: wordpress
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/${USER}/data/wordpress
+      o: bind
