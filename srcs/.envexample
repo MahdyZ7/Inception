@@ -1,0 +1,11 @@
+DB_NAME=wordpress
+DB_USER=wordpress_user
+DB_PASSWORD=wordpress_password
+DB_HOST=wordpress_db
+admin_user=MahdyZ7
+admin_password=MahdyZ7
+admin_email=green@gmail.com
+nrml_user=Asif
+nrml_password=GreenCar
+nrml_emai=asif@gmail.com
+
