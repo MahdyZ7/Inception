@@ -2,7 +2,7 @@ version: '3.9'
 services:
   nginx:
     container_name: nginx
-    build: ./srcs/requirements/nginx/
+    build: ./requirements/nginx/
     env_file:
       - .env
     ports:
@@ -17,7 +17,7 @@ services:
   
   wordpress:
     container_name: wordpress
-    build: ./srcs/requirements/wordpress/
+    build: ./requirements/wordpress/
     env_file:
       - .env
     expose:
@@ -32,7 +32,7 @@ services:
 
   mariadb:
     container_name: mariadb
-    build: ./srcs/requirements/mariadb/
+    build: ./requirements/mariadb/
     env_file:
       - .env
     expose:

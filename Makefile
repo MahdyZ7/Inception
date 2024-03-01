@@ -2,10 +2,15 @@ list =  $(shell docker ps -aq)
 build:
 	mkdir -p /home/$(USER)/data/mariadb
 	mkdir -p /home/$(USER)/data/wordpress
-	docker compose ./srcs/docker-compose up --build
+	docker compose -f ./srcs/docker-compose.yml up --build
 
-run:
-	docker compose up
+down:
+	docker compose -f ./srcs/docker-compose.yml down
+
+restart:
+	docker compose -f ./srcs/docker-compose.yml restart
+
+all: build
 
 cclean:
 	docker stop $(list)
