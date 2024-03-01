@@ -2,7 +2,7 @@ version: '3.9'
 services:
   nginx:
     container_name: nginx
-    build: ./srcs/requirements/nginxDeb/
+    build: ./srcs/requirements/nginx/
     env_file:
       - .env
     ports:
@@ -29,7 +29,7 @@ services:
     restart: on-failure
     volumes:
       - wordpress:/var/www/html
-  
+
   mariadb:
     container_name: mariadb
     build: ./srcs/requirements/mariadb/

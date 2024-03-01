@@ -9,7 +9,7 @@ mysql_install_db --datadir=/var/lib/mysql
 mysqld_safe &
 mysql_var=$!
 
-until mysqladmin ping &>/dev/null; do
+until mysqladmin ping -h localhost --silent; do
 	echo "Waiting for mysqld to be ready"
 	sleep 3
 done
