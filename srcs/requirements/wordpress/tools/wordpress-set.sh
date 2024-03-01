@@ -7,10 +7,10 @@ cd /var/www/html/wordpress
 # Download WordPress
 wp core download --force --allow-root
 
-until mysqladmin ping -h mariadb --silent; do
-	echo "Waiting for mysqld to be ready"
-	sleep 3
-done
+# until mysqladmin ping -h mariadb --silent; do
+# 	echo "Waiting for mysqld to be ready"
+# 	sleep 3
+# done
 
 # Create the wp-config.php file in the correct directory
 wp config create --path=/var/www/html/wordpress --allow-root --dbname=wordpress --dbuser=wordpress_user --dbpass=wordpress --dbhost=mariadb:3306 --dbprefix=wp_
