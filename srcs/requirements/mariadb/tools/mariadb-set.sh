@@ -1,8 +1,8 @@
 #!/bin/bash
 
-echo "" >> /etc/mysql/my.cnf
+echo  >> /etc/mysql/my.cnf
 echo "[mysqld]" >> /etc/mysql/my.cnf
-echo "bind-address = 0.0.0.0" >> /etc/mysql/my.cnf
+echo "bind-address=0.0.0.0" >> /etc/mysql/my.cnf
 
 mysql_install_db --datadir=/var/lib/mysql
 
@@ -14,9 +14,9 @@ until mysqladmin ping -h localhost --silent; do
 	sleep 3
 done
 
-mysql -u root -e "CREATE DATABASE wordpress;"
-mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'wordpress';"
-mysql -u root -e "GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpress'@'%' IDENTIFIED BY 'wordpress';"
-mysql -u root -e "FLUSH PRIVILEGES;"
+mysql -u root -e "CREATE DATABASE wordpress;
+				ALTER USER 'root'@'localhost' IDENTIFIED BY 'wordpress';
+				GRANT ALL ON wordpress.* TO 'wordpress_user'@'%' IDENTIFIED BY 'wordpress';
+				FLUSH PRIVILEGES;"
 
 wait $mysql_var

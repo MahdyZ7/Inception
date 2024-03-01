@@ -2,8 +2,8 @@
 
 FROM debian:bullseye
 USER root
-RUN apt-get update && apt-get upgrade -y
-RUN apt-get install curl php php-fpm mariadb-client php-mysql php-mysqli wget -y
+RUN apt update && apt upgrade -y
+RUN apt install curl php php-fpm mariadb-client php-mysql php-mysqli wget -y
 
 RUN mkdir -p /run/php
 
