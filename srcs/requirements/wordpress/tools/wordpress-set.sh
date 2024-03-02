@@ -13,12 +13,12 @@ wp core download --force --allow-root
 # done
 
 # Create the wp-config.php file in the correct directory
-wp config create --path=/var/www/html/wordpress --allow-root --dbname=wordpress --dbuser=wordpress_user --dbpass=wordpress --dbhost=mariadb:3306 --dbprefix=wp_
+wp config create --path=/var/www/html/wordpress --allow-root --dbname=$DB_NAME --dbuser=$DB_USER --dbpass=$DB_PASSWORD --dbhost=mariadb:3306 --dbprefix=wp_
 
 # Check if WordPress is installed in the correct directory
 if ! wp core is-installed --allow-root --path=/var/www/html/wordpress; then
-    wp core install --url=ayassin.42.fr --title="ayassin" --admin_user=ayassin --admin_password=ayassin --admin_email="gmail@gamil.com" --allow-root
-    wp user create mkhan mkhan@gmail.com --role=author --user_pass=mkhan --allow-root
+    wp core install --url=ayassin.42.fr --title="ayassin" --admin_user=$admin_user --admin_password=$admin_password --admin_email=$admin_email --allow-root
+    wp user create $nrml_user $nrml_email --role=author --user_pass=$nrml_password --allow-root
 fi
 
 # Start PHP-FPM

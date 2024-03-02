@@ -14,9 +14,9 @@ until mysqladmin ping -h localhost --silent; do
 	sleep 3
 done
 
-mysql -u root -e "CREATE DATABASE wordpress;
-				ALTER USER 'root'@'localhost' IDENTIFIED BY 'wordpress';
-				GRANT ALL ON wordpress.* TO 'wordpress_user'@'%' IDENTIFIED BY 'wordpress';
+mysql -u root -e "CREATE DATABASE $DB_NAME;
+				ALTER USER 'root'@'localhost' IDENTIFIED BY '$DB_PASSWORD';
+				GRANT ALL ON $DB_NAME.* TO '$DB_USER'@'%' IDENTIFIED BY '$DB_PASSWORD';
 				FLUSH PRIVILEGES;"
 
 wait $mysql_var

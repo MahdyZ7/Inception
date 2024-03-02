@@ -16,7 +16,7 @@ cclean:
 	docker stop $(list)
 	docker rm $(list)
 
-prune:
+prune: cclean
 	yes | docker system prune -a 
 	yes | docker volume prune
 	rm -rf /home/$(USER)/data
