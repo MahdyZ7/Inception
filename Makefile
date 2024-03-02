@@ -1,8 +1,8 @@
 list =  $(shell docker ps -aq)
-build:
+up:
 	mkdir -p /home/$(USER)/data/mariadb
 	mkdir -p /home/$(USER)/data/wordpress
-	docker compose -f ./srcs/docker-compose.yml up --build
+	docker compose -f ./srcs/docker-compose.yml up --up
 
 down:
 	docker compose -f ./srcs/docker-compose.yml down
@@ -10,11 +10,11 @@ down:
 restart:
 	docker compose -f ./srcs/docker-compose.yml restart
 
-all: build
+all: up
 
 cclean:
-	docker stop $(list)
-	docker rm $(list)
+	if [ "$(docker ps -aq)" ]; then docker stop $(docker ps -aq); fi
+	if [ "$(docker ps -aq)" ]; then docker rm $(docker ps -aq); fi
 
 prune: cclean
 	yes | docker system prune -a 
